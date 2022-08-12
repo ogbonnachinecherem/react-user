@@ -18,7 +18,7 @@ function User(props) {
 					<Modal.Title>Codetrain User Edit</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<EditUserForm editUser={props.editUser} userBio={props.userBio} />
+					<EditUserForm editUser={props.editUser} userBio={props.userBio} handleClose={handleClose} />
 				</Modal.Body>
 			</Modal>
 			<Col md={6} style={{  marginBottom: "10px" }}>

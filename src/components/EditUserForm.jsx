@@ -13,6 +13,7 @@ function EditUserForm(props) {
 		setName("");
 		setGen("");
 		setEmail("");
+		props.handleClose();
 	};
 	return (
 		<div>

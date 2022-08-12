@@ -6,10 +6,10 @@ function AllUsers(props) {
 	return (
 		<Container>
 			<Row>
-				{props.userData.map((item) => {
+				{props.userData.map((item, index) => {
 					return (
 						<User
-							key={item.id}
+							key={index}
 							userBio={item}
 							delete={props.delete}
 							editUser={props.editUser}
