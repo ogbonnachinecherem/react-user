@@ -31,7 +31,7 @@ function App() {
 	const deleteUser = (id) => {
 		// setUsers(users.filter((user) => user.id !== id));
 		setUsers(
-			users.filter((user) => {
+			users.filter((user, id) => {
 				if (user.id !== id) {
 					return user;
 				}
