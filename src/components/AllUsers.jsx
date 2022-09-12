@@ -1,12 +1,16 @@
 import React from "react";
 import User from "./User";
 import { Row, Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 function AllUsers(props) {
+	const {users} = useSelector((state) => {
+		return state
+	})
 	return (
 		<Container>
 			<Row>
-				{props.userData.map((item, index) => {
+				{users.map((item, index) => {
 					return (
 						<User
 							key={index}

@@ -17,6 +17,16 @@ let initialState= {
     },
     ],
  };
-let UsersReducer = (state = initialState, action) => {};
-
+let UsersReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "ADD_USER":
+      return {...state, users: [...state.users, action.payload]}
+      
+      break;
+    default:
+      return state;
+      
+  }
+ 
+};
 export default UsersReducer;

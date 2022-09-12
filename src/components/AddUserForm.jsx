@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { AddUser } from "../actions/UserActions";
+import { connect } from "react-redux";
 
 function AddUserForm(props) {
 	const [name, setName] = useState("");
@@ -9,7 +11,7 @@ function AddUserForm(props) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		props.newUser({ name, gen, email });
+		props.AddUser({ name, gen, email });
 
 		setName("");
 		setGen("");
@@ -60,5 +62,9 @@ function AddUserForm(props) {
 		</div>
 	);
 }
+ const mapDispatchToProps = {
+ 	AddUser: AddUser,
+ };
+export default connect(null, mapDispatchToProps)(AddUserForm);
 
-export default AddUserForm;
+// export default AddForm;

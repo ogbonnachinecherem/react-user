@@ -5,23 +5,25 @@ import AllUsers from "./components/AllUsers";
 import AddUserForm from "./components/AddUserForm";
 
 function App() {
-	const [users, setUsers] = useState([
-		{ name: "confidence", 
-    email: "confidence22@gmail.com", 
-    gen: "22",
-    id: "1",
-    },
-		{ name: "eldee", 
-    email: "eldee23@gmail.com", 
-    gen: "23", 
-    id: "2", 
-    },
-    {name: "sunday",
-     email: "sunday21@gmail.com",
-     gen: "21",
-     id: "3" ,
-    },
-	]);
+	const [users, setUsers] = useState(
+		[
+		// 	{ name: "confidence", 
+		// email: "confidence22@gmail.com", 
+		// gen: "22",
+		// id: "1",
+		// },
+		// 	{ name: "eldee", 
+		// email: "eldee23@gmail.com", 
+		// gen: "23", 
+		// id: "2", 
+		// },
+		// {name: "sunday",
+		//  email: "sunday21@gmail.com",
+		//  gen: "21",
+		//  id: "3" ,
+		// },
+		]
+	);
 	const addNewUser = (user) => {
 		user.id = Math.random().toString();
 		setUsers([...users, user]);
