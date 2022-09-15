@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { AddUser } from "../actions/UserActions";
 import { connect } from "react-redux";
+import { v4 as uuid } from "uuid";
 
 function AddUserForm(props) {
 	const [name, setName] = useState("");
 	const [gen, setGen] = useState("");
 	const [email, setEmail] = useState("");
+	
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		props.AddUser({ name, gen, email });
+		props.AddUser({id:uuid(), name, gen, email });
 
 		setName("");
 		setGen("");

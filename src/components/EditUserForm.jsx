@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { EditUser } from "../actions/UserActions";
+// import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function EditUserForm(props) {
+	const dispatch = useDispatch();
 	const [name, setName] = useState(props.userBio.name);
 	const [gen, setGen] = useState(props.userBio.gen);
 	const [email, setEmail] = useState(props.userBio.email);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		props.editUser(props.userBio.id, { name, email, gen });
-
+		dispatch(EditUser({id: props.userBio.id,  name, email, gen}))
+		// props.editUser(props.userBio.id, { name, email, gen });
+		// props.EditUser({id:uuid(), name, gen, email });
+		
 		setName("");
 		setGen("");
 		setEmail("");
@@ -59,5 +65,8 @@ function EditUserForm(props) {
 		</div>
 	);
 }
-
+// const mapdispatchToProps = {
+// 	EditUser: EditUser,
+// }
+// export default connect(null, mapdispatchToProps)(EditUserForm)
 export default EditUserForm;

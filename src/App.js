@@ -27,7 +27,7 @@ function App() {
 	const addNewUser = (user) => {
 		user.id = Math.random().toString();
 		setUsers([...users, user]);
-		console.log(user);
+		// console.log(user);
 	};
 
 	const deleteUser = (id) => {
