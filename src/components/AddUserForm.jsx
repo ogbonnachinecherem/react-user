@@ -3,6 +3,9 @@ import { Form, Button } from "react-bootstrap";
 import { AddUser } from "../actions/UserActions";
 import { connect } from "react-redux";
 import { v4 as uuid } from "uuid";
+import {db} from "../firebase/Config";
+import { doc, setDoc } from "firebase/firestore"; 
+
 
 function AddUserForm(props) {
 	const [name, setName] = useState("");
@@ -10,14 +13,17 @@ function AddUserForm(props) {
 	const [email, setEmail] = useState("");
 	
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async(e) => {
 		e.preventDefault();
+		let myUser = {id:uuid(), name:name, gen:gen, email:email}
 
-		props.AddUser({id:uuid(), name, gen, email });
-
+		//props.AddUser({id:uuid(), name, gen, email });
+		try{await setDoc(doc(db, "Users", myUser.id),myUser);
 		setName("");
 		setGen("");
 		setEmail("");
+		}catch(e) {console.log(e)}
+		
 	};
 	return (
 		<div>
