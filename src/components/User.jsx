@@ -3,18 +3,24 @@ import { Card, Col, Button, Modal } from "react-bootstrap";
 import EditUserForm from "./EditUserForm";
 import { DeleteUser } from "../actions/UserActions";
 import { connect} from "react-redux";
-
-
+import { doc, deleteDoc } from "firebase/firestore";
+import {db} from "../firebase/Config";
 
 function User(props) {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	const hadleDelete = (e) => {
+	const hadleDelete = async(e) => {
 		e.preventDefault();
-		props.DeleteUser(props.userBio.id);
+		// props.DeleteUser(props.userBio.id);
 		// Dispatch(DeleteUser(props.userInfo.id));
+
+try {
+	await deleteDoc(doc(db, "user", props.userBio.id));
+} catch (e) {
+	console.log(e);
+}
 	};
 	return (
 		<>
