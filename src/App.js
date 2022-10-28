@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Row, Col, Container } from "react-bootstrap";
+import {Container } from "react-bootstrap";
 import AllUsers from "./components/AllUsers";
 import AddUserForm from "./components/AddUserForm";
 import {AddUser} from "../src/actions/UserActions";
 import { useDispatch } from "react-redux";
 import {db} from "../src/firebase/Config";
 import {collection, orderBy, query, onSnapshot } from "firebase/firestore";
+import Routers from "./Routers";
+import { auth } from "../src/firebase/Config";
+import { dispatchUser } from "./actions/authActions";
+import  "../src/App.css";
 
 function App() {
 	const  dispatch = useDispatch();
@@ -27,7 +31,17 @@ function App() {
 		} catch (e) {
 			console.log(e);
 		}
-	})
+	},[]);
+	useEffect(() => {
+		auth.onAuthStateChanged((user) => {
+			if (user) {
+				dispatch(dispatchUser(user));
+			} else {
+				dispatch(dispatchUser(null));
+			}
+			console.log(user);
+		});
+	},[]);
 	// const [users, setUsers] = useState(
 	// 	[
 	// 		{ name: "confidence", 
@@ -76,16 +90,17 @@ function App() {
 
 	return (
 		<Container style={{ marginTop: "30px" }}>
-			<Row>
+			{/* <Row>
 				<Col md={6}>
 					<AddUserForm />
-					{/* <newUser={addNewUser} /> */}
+					<newUser={addNewUser} />
 				</Col>
 				<Col md={6}>
 					<AllUsers/> 
-					{/* <userData={users} editUser={EditUser} delete={deleteUser} /> */}
+					<userData={users} editUser={EditUser} delete={deleteUser} />
 				</Col>
-			</Row>
+			</Row> */}
+			<Routers />
 		</Container>
 	);
 }

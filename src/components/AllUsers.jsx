@@ -4,16 +4,16 @@ import { Row, Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 function AllUsers(props) {
-	const {users} = useSelector((state) => {
-		return state
-	})
+	const users  = useSelector((state) => {
+		return state.UsersReducer.users;
+	});
 	return (
 		<Container>
 			<Row>
-				{users.map((item, index) => {
+				{users.map((item) => {
 					return (
 						<User
-							key={index}
+							key={item.id}
 							userBio={item}
 							delete={props.delete}
 							editUser={props.editUser}
@@ -26,3 +26,4 @@ function AllUsers(props) {
 }
 
 export default AllUsers;
+

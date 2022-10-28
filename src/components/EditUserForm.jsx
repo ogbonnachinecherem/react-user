@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { EditUser } from "../actions/UserActions";
+//import { EditUser } from "../actions/UserActions";
 // import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
+//import { useDispatch } from "react-redux";
 import { doc, updateDoc } from "firebase/firestore";
 import {db} from "../firebase/Config"
 function EditUserForm(props) {
-	const dispatch = useDispatch();
 	const [name, setName] = useState(props.userBio.name);
 	const [gen, setGen] = useState(props.userBio.gen);
 	const [email, setEmail] = useState(props.userBio.email);
